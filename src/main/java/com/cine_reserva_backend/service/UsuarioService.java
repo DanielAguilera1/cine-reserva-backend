@@ -1,10 +1,11 @@
 package com.cine_reserva_backend.service;
 
-import com.cine_reserva_backend.model.table.Usuario;
-import com.cine_reserva_backend.repository.UsuarioRepository;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.cine_reserva_backend.model.table.Usuario;
+import com.cine_reserva_backend.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {

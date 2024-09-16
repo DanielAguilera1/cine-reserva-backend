@@ -1,12 +1,13 @@
 package com.cine_reserva_backend.service;
 
-import com.cine_reserva_backend.model.document.Funcion;
-import com.cine_reserva_backend.repository.FuncionRepository;
-import org.springframework.stereotype.Service;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.cine_reserva_backend.model.document.Funcion;
+import com.cine_reserva_backend.repository.FuncionRepository;
 
 @Service
 public class FuncionService {
@@ -29,11 +30,13 @@ public class FuncionService {
     }
 
     public void CrearFuncion(Funcion funcion) throws Exception {
-        if (peliculaService.ObtenerPeliculaPorID(funcion.getPeliculaId()).getId() == null) throw new Exception("La Pelicula para esta funcion no existe");
-        if (salaService.ObtenerSalaPorID(funcion.getSalaId()).getId() == null) throw new Exception("La Sala para esta funcion no existe");
+        if (peliculaService.ObtenerPeliculaPorID(funcion.getPeliculaId()).getId() == null)
+            throw new Exception("La Pelicula para esta funcion no existe");
+        if (salaService.ObtenerSalaPorID(funcion.getSalaId()).getId() == null)
+            throw new Exception("La Sala para esta funcion no existe");
 
-        if (funcionRepository.existsBySalaIdAndFechaInicioLessThanEqualAndFechaFinGreaterThanEqual
-                (funcion.getSalaId(), funcion.getFechaInicio(), funcion.getFechaFin())) {
+        if (funcionRepository.existsBySalaIdAndFechaInicioLessThanEqualAndFechaFinGreaterThanEqual(funcion.getSalaId(),
+                funcion.getFechaInicio(), funcion.getFechaFin())) {
             throw new Exception("Conflicto en las fechas de inicio y fin");
         }
 

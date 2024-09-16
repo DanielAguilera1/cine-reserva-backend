@@ -1,27 +1,27 @@
 package com.cine_reserva_backend.controller;
 
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.cine_reserva_backend.model.document.Funcion;
 import com.cine_reserva_backend.model.dto.FechaRequest;
 import com.cine_reserva_backend.service.FuncionService;
-import com.cine_reserva_backend.service.PeliculaService;
-import com.cine_reserva_backend.service.SalaService;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Date;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/funciones")
 public class FuncionController {
 
     private final FuncionService funcionService;
-    private final PeliculaService peliculaService;
-    private final SalaService salaService;
 
-    public FuncionController(SalaService salaService, PeliculaService peliculaService, FuncionService funcionService) {
-        this.salaService = salaService;
-        this.peliculaService = peliculaService;
+    public FuncionController(FuncionService funcionService) {
         this.funcionService = funcionService;
     }
 

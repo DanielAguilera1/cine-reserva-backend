@@ -9,6 +9,7 @@ public enum MetodoDePago {
     PAYPAL("Paypal"),
     TARJETA("Tarjeta"),
     EN_FISICO("En Fisico");
+
     private final String valor;
 
     public static MetodoDePago fromString(String valor) {

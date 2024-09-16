@@ -1,16 +1,21 @@
 package com.cine_reserva_backend.controller;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.cine_reserva_backend.model.dto.TiqueteDTO;
 import com.cine_reserva_backend.model.table.MetodoDePago;
 import com.cine_reserva_backend.model.table.Tiquete;
 import com.cine_reserva_backend.service.FuncionService;
 import com.cine_reserva_backend.service.TiqueteService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/tiquetes")
