@@ -45,7 +45,7 @@ Ejecutar con CMD en el proyecto el siguiente comando para descargar todas las de
 mvnw install
 ```
 
-####**CONFIGURACIÓN : **
+#### **CONFIGURACIÓN : **
 Si queremos usar este repositorio una vez clonado y no pasar tu infrormacion de tu base de datos por si haces pruebas desde tu maquina o en otro host crea un archivo .properties
 **application-dev.properties** recomiendo llamarlo asi ya que asi fue como lo configure en el gitIgnore para evitar pasar informacion al hacer push al repositorio una vez creado cambiar los siguientes valores que dice:
 **PUERTO, {NOMBRE_EJEMPLO}, USERNAME, CONTRASEÑA, NOMBRE_EJEMPLO**
