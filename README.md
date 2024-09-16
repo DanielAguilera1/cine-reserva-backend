@@ -14,8 +14,10 @@ Este proyecto es una aplicación backend desarrollada en **Spring Boot** para la
 
 El sistema de venta de tiquetes de cine permite gestionar las funciones de cine, salas, películas y la disponibilidad de asientos en cada función. El proyecto maneja:
 
+- **Usuarios** (almacenados en MySQL).
 - **Películas** (almacenadas en MySQL).
-- **Salas** y **funciones** (gestión de horarios, asientos y disponibilidad en MongoDB).
+- **Salas** (almacenadas en MySQL).
+- **funciones** (gestión de horarios, asientos y disponibilidad en MongoDB).
 - **Manejo de tiquetes** para los usuarios, con opciones de métodos de pago definidos (`Paypal`, `Tarjeta`, `En Fisico`).
 
 ## Arquitectura del Proyecto
