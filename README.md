@@ -9,9 +9,6 @@ Este proyecto es una aplicación backend desarrollada en **Spring Boot** para la
 3. [Tecnologías Utilizadas](#tecnologías-utilizadas)
 4. [Instalación y Configuración](#instalación-y-configuración)
 5. [Ejemplos de Uso](#ejemplos-de-uso)
-6. [Estructura de la Base de Datos](#estructura-de-la-base-de-datos)
-7. [Contribuciones](#contribuciones)
-8. [Licencia](#licencia)
 
 ## Descripción
 
@@ -30,22 +27,43 @@ El backend está diseñado en **Spring Boot**, con controladores REST que expone
 
 ## Tecnologías Utilizadas
 
-- **Java 17**
-- **Spring Boot 3.x**
+- **Java 20**
+- **Spring Boot 3.3.3**
 - **MySQL**
 - **MongoDB**
 - **Maven**
 - **Lombok**
 - **Spring Data JPA (para MySQL)**
 - **Spring Data MongoDB (para MongoDB)**
-- **Swagger** (para documentación de la API)
 - **Postman** (para pruebas de API)
 
 ## Instalación y Configuración
 
+#### **INSTALACION : **
+Ejecutar con CMD en el proyecto el siguiente comando para descargar todas las dependencias
+```
+mvnw install
+```
+
+####**CONFIGURACIÓN : **
+Si queremos usar este repositorio una vez clonado y no pasar tu infrormacion de tu base de datos por si haces pruebas desde tu maquina o en otro host crea un archivo .properties
+**application-dev.properties** recomiendo llamarlo asi ya que asi fue como lo configure en el gitIgnore para evitar pasar informacion al hacer push al repositorio una vez creado cambiar los siguientes valores que dice:
+**PUERTO, {NOMBRE_EJEMPLO}, USERNAME, CONTRASEÑA, NOMBRE_EJEMPLO**
+```
+# Mysql
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:PUERTO/{NOMBRE_EJEMPLO}createDatabaseIfNotExist=true
+spring.datasource.username=USERNAME
+spring.datasource.password=CONTRASEÑA
+spring.jpa.hibernate.ddl-auto=update
+# MongoDB
+spring.data.mongodb.uri=mongodb://localhost:PUERTO/NOMBRE_EJEMPLO
+spring.data.mongodb.database=NOMBRE_EJEMPLO
+```
+
 ### Prerrequisitos
 
-- JDK 17+
+- JDK 20
 - Maven 3.x
 - MySQL 8.x o superior
 - MongoDB 5.x o superior
