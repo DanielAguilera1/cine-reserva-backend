@@ -1,11 +1,10 @@
 package com.cine_reserva_backend.service;
 
-import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import com.cine_reserva_backend.model.table.Tiquete;
 import com.cine_reserva_backend.repository.TiqueteRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class TiqueteService {
@@ -15,7 +14,7 @@ public class TiqueteService {
     private final UsuarioService usuarioService;
 
     public TiqueteService(TiqueteRepository tiqueteRepository, FuncionService funcionService,
-            UsuarioService usuarioService) {
+                          UsuarioService usuarioService) {
         this.tiqueteRepository = tiqueteRepository;
         this.funcionService = funcionService;
         this.usuarioService = usuarioService;
