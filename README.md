@@ -8,7 +8,7 @@ Este proyecto es una aplicación backend desarrollada en **Spring Boot** para la
 2. [Arquitectura del Proyecto](#arquitectura-del-proyecto)
 3. [Tecnologías Utilizadas](#tecnologías-utilizadas)
 4. [Instalación y Configuración](#instalación-y-configuración)
-5. [Ejemplos de Uso](#ejemplos-de-uso)
+5. [Prerrequisitos](#Prerrequisitos)
 
 ## Descripción
 

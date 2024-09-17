@@ -30,9 +30,8 @@ public class PeliculaController {
     @GetMapping("/{id}")
     public ResponseEntity<Pelicula> ObtenerPeliculaPorID(@PathVariable long id) {
         Pelicula pelicula = this.peliculaService.ObtenerPeliculaPorID(id);
-        if (pelicula != null)
-            return ResponseEntity.ok(pelicula);
-        return ResponseEntity.notFound().build();
+        if (pelicula == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(pelicula);
     }
 
     @PostMapping()

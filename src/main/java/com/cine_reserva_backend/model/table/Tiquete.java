@@ -1,5 +1,6 @@
 package com.cine_reserva_backend.model.table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,7 +31,7 @@ public class Tiquete {
     @NonNull()
     private String funcionId;
 
-    @Column(columnDefinition = "Decimal(5,2)", nullable = false)
+    @Column(columnDefinition = "Decimal(10,2)", nullable = false)
     @NonNull()
     private Double precio;
 
@@ -42,7 +43,8 @@ public class Tiquete {
     @NonNull()
     private MetodoDePago metodoDePago;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JsonIgnore
     private Usuario usuario;
 }

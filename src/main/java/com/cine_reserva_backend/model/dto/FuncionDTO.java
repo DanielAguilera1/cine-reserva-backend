@@ -11,8 +11,18 @@ import java.util.Date;
 @AllArgsConstructor
 public class FuncionDTO {
     private String id;
-    private Long peliculaId;
+    private String tituloPelicula;
     private Integer salaId;
     private Date fechaInicio;
     private Date fechaFin;
+
+    @Override
+    public String toString() {
+        return "Funcion: {" + '\n' +
+                "Titulo: " + tituloPelicula + '\n' +
+                "salaId: " + salaId + '\n' +
+                "fechaInicio: " + fechaInicio + '\n' +
+                "fechaFin: " + fechaFin + '\n' +
+                '}';
+    }
 }

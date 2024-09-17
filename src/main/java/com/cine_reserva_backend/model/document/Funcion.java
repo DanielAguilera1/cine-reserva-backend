@@ -1,8 +1,6 @@
 package com.cine_reserva_backend.model.document;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
-import org.hibernate.annotations.Fetch;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -21,16 +19,16 @@ public class Funcion {
     @Id()
     private String id;
 
-    @NonNull()
+    @NonNull
     private Long peliculaId;
 
-    @NonNull()
+    @NonNull
     private Integer salaId;
 
-    @NonNull()
+    @NonNull
     private Date fechaInicio;
 
-    @NonNull()
+    @NonNull
     private Date fechaFin;
     private List<Asiento> asientos;
 }

@@ -1,7 +1,9 @@
 package com.cine_reserva_backend.service;
 
+import com.cine_reserva_backend.model.dto.TiqueteDTO;
 import com.cine_reserva_backend.model.table.Tiquete;
 import com.cine_reserva_backend.repository.TiqueteRepository;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +15,7 @@ public class TiqueteService {
     private final FuncionService funcionService;
     private final UsuarioService usuarioService;
 
-    public TiqueteService(TiqueteRepository tiqueteRepository, FuncionService funcionService,
-                          UsuarioService usuarioService) {
+    public TiqueteService(TiqueteRepository tiqueteRepository, @Lazy FuncionService funcionService, @Lazy UsuarioService usuarioService) {
         this.tiqueteRepository = tiqueteRepository;
         this.funcionService = funcionService;
         this.usuarioService = usuarioService;
@@ -28,13 +29,12 @@ public class TiqueteService {
         return tiqueteRepository.findById(id).orElse(null);
     }
 
-    public void AgregarTiquete(Tiquete tiquete) throws Exception {
-        if (tiquete.getId() != null)
-            throw new Exception("No puedes colocar ID al tiquete");
-        if (usuarioService.ObtenerFuncionPorID(tiquete.getUsuarioId()).getId().describeConstable().isEmpty())
-            throw new Exception("El Usuario no existe");
-        if (funcionService.ObtenerFuncionPorID(tiquete.getFuncionId()).getId().isEmpty())
-            throw new Exception("La Pelicula para esta funcion no existe");
+    public void AgregarTiquete(Tiquete tiquete)  {
+        if (tiquete.getId() != null) throw new RuntimeException("No puedes colocar ID al tiquete");
+        if (usuarioService.ObtenerFuncionPorID(tiquete.getUsuarioId()) == null)
+            throw new RuntimeException("El Usuario no existe");
+        if (funcionService.ObtenerFuncionPorID(tiquete.getFuncionId()) == null)
+            throw new RuntimeException("La Pelicula para esta funcion no existe");
 
         tiqueteRepository.save(tiquete);
     }

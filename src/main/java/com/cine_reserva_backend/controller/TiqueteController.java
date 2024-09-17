@@ -1,14 +1,14 @@
 package com.cine_reserva_backend.controller;
 
-import com.cine_reserva_backend.model.dto.TiqueteDTO;
-import com.cine_reserva_backend.model.table.MetodoDePago;
 import com.cine_reserva_backend.model.table.Tiquete;
 import com.cine_reserva_backend.service.FuncionService;
 import com.cine_reserva_backend.service.TiqueteService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -27,19 +27,9 @@ public class TiqueteController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Tiquete> ObtenerTiquetePorID(@PathVariable long id) {
-        return ResponseEntity.ok(tiqueteService.ObtenerTiquetePorID(id));
-    }
-
-    @PostMapping()
-    public ResponseEntity<String> AgregarTiquete(@RequestBody TiqueteDTO tiqueteDTO) {
-        try {
-            tiqueteService.AgregarTiquete(new Tiquete(
-                    tiqueteDTO.getAsientoPuesto(), tiqueteDTO.getUsuarioId(),
-                    tiqueteDTO.getFuncionId(), tiqueteDTO.getPrecio(),
-                    LocalDateTime.now(), MetodoDePago.fromString(tiqueteDTO.getMetodoDePago())));
-            return ResponseEntity.ok("Tiquete creado con éxito.");
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+        Tiquete tiquete = tiqueteService.ObtenerTiquetePorID(id);
+        if (tiquete == null)
+            return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(tiquete);
     }
 }
