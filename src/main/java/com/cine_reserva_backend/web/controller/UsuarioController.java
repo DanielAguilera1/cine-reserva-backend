@@ -1,12 +1,9 @@
-package com.cine_reserva_backend.controller;
+package com.cine_reserva_backend.web.controller;
 
 import com.cine_reserva_backend.model.table.Usuario;
 import com.cine_reserva_backend.service.UsuarioService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,9 +24,19 @@ public class UsuarioController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> obtenerUsuarioPorID(@PathVariable long id) {
-        Usuario usuario = usuarioService.ObtenerFuncionPorID(id);
-        if (usuarioService.ObtenerFuncionPorID(id) == null) return ResponseEntity.notFound().build();
+        Usuario usuario = usuarioService.obtenerUsuarioPorID(id);
+        if (usuario == null) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(usuario);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> borrarUsuarioPorID(@PathVariable long id) {
+        try {
+            usuarioService.EliminarUsuarioPorID(id);
+            return ResponseEntity.ok("Usuario Borrado");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
 }

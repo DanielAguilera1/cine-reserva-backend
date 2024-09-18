@@ -1,6 +1,5 @@
 package com.cine_reserva_backend.service;
 
-import com.cine_reserva_backend.model.dto.TiqueteDTO;
 import com.cine_reserva_backend.model.table.Tiquete;
 import com.cine_reserva_backend.repository.TiqueteRepository;
 import org.springframework.context.annotation.Lazy;
@@ -29,9 +28,9 @@ public class TiqueteService {
         return tiqueteRepository.findById(id).orElse(null);
     }
 
-    public void AgregarTiquete(Tiquete tiquete)  {
+    public void AgregarTiquete(Tiquete tiquete) {
         if (tiquete.getId() != null) throw new RuntimeException("No puedes colocar ID al tiquete");
-        if (usuarioService.ObtenerFuncionPorID(tiquete.getUsuarioId()) == null)
+        if (usuarioService.obtenerUsuarioPorID(tiquete.getUsuarioId()) == null)
             throw new RuntimeException("El Usuario no existe");
         if (funcionService.ObtenerFuncionPorID(tiquete.getFuncionId()) == null)
             throw new RuntimeException("La Pelicula para esta funcion no existe");

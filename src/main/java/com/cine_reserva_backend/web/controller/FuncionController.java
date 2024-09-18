@@ -1,4 +1,4 @@
-package com.cine_reserva_backend.controller;
+package com.cine_reserva_backend.web.controller;
 
 import com.cine_reserva_backend.model.document.Asiento;
 import com.cine_reserva_backend.model.document.Funcion;
@@ -6,7 +6,6 @@ import com.cine_reserva_backend.model.dto.FechaRequest;
 import com.cine_reserva_backend.model.dto.FuncionCrearDTO;
 import com.cine_reserva_backend.model.dto.FuncionDTO;
 import com.cine_reserva_backend.model.dto.TiqueteDTO;
-import com.cine_reserva_backend.model.table.MetodoDePago;
 import com.cine_reserva_backend.service.FuncionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -73,8 +72,8 @@ public class FuncionController {
     @PostMapping("/reservar")
     public ResponseEntity<String> reservarEntradas(@RequestBody TiqueteDTO tiqueteDTO) {
         try {
-        funcionService.reservarEntradas(tiqueteDTO);
-        return ResponseEntity.ok().body("Asiento reservado con exito!");
+            funcionService.reservarEntradas(tiqueteDTO);
+            return ResponseEntity.ok().body("Asiento reservado con exito!");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

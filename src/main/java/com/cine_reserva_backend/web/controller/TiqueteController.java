@@ -1,4 +1,4 @@
-package com.cine_reserva_backend.controller;
+package com.cine_reserva_backend.web.controller;
 
 import com.cine_reserva_backend.model.table.Tiquete;
 import com.cine_reserva_backend.service.FuncionService;

@@ -105,8 +105,10 @@ public class FuncionService {
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("El asiento no existe en esta función"));
 
-        if (asientoReservado.getDisponible().equals(Boolean.FALSE)) throw new RuntimeException("El asiento ya está ocupado");
-        if (!tiqueteDTO.getPrecio().equals(asientoReservado.getPrecio())) throw new RuntimeException("El tiquete tiene un precio diferente precio al de la funcion");
+        if (asientoReservado.getDisponible().equals(Boolean.FALSE))
+            throw new Exception("El asiento ya está ocupado");
+        if (!tiqueteDTO.getPrecio().equals(asientoReservado.getPrecio()))
+            throw new Exception("El tiquete tiene un precio diferente precio al de la funcion");
 
         asientoReservado.setDisponible(false);
 
