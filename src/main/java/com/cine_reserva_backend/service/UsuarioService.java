@@ -36,15 +36,12 @@ public class UsuarioService implements UserDetailsService {
         usuarioRepository.delete(usuario);
     }
 
-
     public void registrarUsuario(RegisterDTO registerDTO) {
-        Usuario usuario = new Usuario();
-        usuario.setId(null);
-        usuario.setEmail(registerDTO.getEmail());
-        usuario.setNombre(registerDTO.getNombre());
-        usuario.setPassword(new BCryptPasswordEncoder().encode(registerDTO.getPassword()));
-        usuario.setTelefono(null);
-        usuarioRepository.save(usuario);
+        usuarioRepository.save(Usuario.builder()
+                .email(registerDTO.getEmail())
+                .nombre(registerDTO.getNombre())
+                .password(new BCryptPasswordEncoder().encode(registerDTO.getPassword()))
+                .build());
     }
 
     @Override

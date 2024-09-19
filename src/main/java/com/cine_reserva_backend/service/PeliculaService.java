@@ -24,9 +24,7 @@ public class PeliculaService {
     }
 
     public void AgregarPelicula(Pelicula pelicula) throws Exception {
-        if (pelicula.getId().describeConstable().isPresent()) {
-            throw new Exception("Para crear una pelicula no debe tener ID");
-        }
+        if (pelicula.getId() != null) throw new Exception("Para crear una pelicula no debe tener ID");
         peliculaRepository.save(pelicula);
     }
 

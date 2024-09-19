@@ -16,7 +16,7 @@ import java.util.List;
 public class TiqueteController {
     private final TiqueteService tiqueteService;
 
-    public TiqueteController(TiqueteService tiqueteService, FuncionService funcionService) {
+    public TiqueteController(TiqueteService tiqueteService) {
         this.tiqueteService = tiqueteService;
     }
 

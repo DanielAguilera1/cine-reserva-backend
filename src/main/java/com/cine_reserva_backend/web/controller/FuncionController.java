@@ -50,9 +50,7 @@ public class FuncionController {
     @GetMapping("/dia")
     public ResponseEntity<List<FuncionDTO>> obtenerFuncionesDelDia(@RequestBody FechaRequest fechaRequest) {
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.YEAR, fechaRequest.getYear());
-        cal.set(Calendar.MONTH, fechaRequest.getMonth());
-        cal.set(Calendar.DATE, fechaRequest.getDay());
+        cal.set(fechaRequest.getYear(), fechaRequest.getMonth(), fechaRequest.getDay());
 
         return ResponseEntity.ok(funcionService.obtenerFuncionesPorDia(cal.getTime()));
     }
@@ -73,7 +71,7 @@ public class FuncionController {
     public ResponseEntity<String> reservarEntradas(@RequestBody TiqueteDTO tiqueteDTO) {
         try {
             funcionService.reservarEntradas(tiqueteDTO);
-            return ResponseEntity.ok().body("Asiento reservado con exito!");
+            return ResponseEntity.ok("Asiento reservado con exito!");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

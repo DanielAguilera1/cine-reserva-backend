@@ -112,9 +112,14 @@ public class FuncionService {
 
         asientoReservado.setDisponible(false);
 
-        tiqueteService.AgregarTiquete(new Tiquete(tiqueteDTO.getAsientoPuesto(), tiqueteDTO.getUsuarioId(),
-                tiqueteDTO.getFuncionId(), tiqueteDTO.getPrecio(), LocalDateTime.now(),
-                MetodoDePago.fromString(tiqueteDTO.getMetodoDePago())));
+        tiqueteService.AgregarTiquete(Tiquete.builder()
+                .asientoPuesto(tiqueteDTO.getAsientoPuesto())
+                .usuarioId(tiqueteDTO.getUsuarioId())
+                .funcionId(tiqueteDTO.getFuncionId())
+                .precio(tiqueteDTO.getPrecio())
+                .fechaCompra(LocalDateTime.now())
+                .metodoDePago(MetodoDePago.fromString(tiqueteDTO.getMetodoDePago()))
+                .build());
 
         funcionRepository.save(funcion);
     }

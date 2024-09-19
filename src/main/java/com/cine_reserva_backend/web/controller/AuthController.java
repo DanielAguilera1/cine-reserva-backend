@@ -1,5 +1,9 @@
 package com.cine_reserva_backend.web.controller;
 
+import com.cine_reserva_backend.model.dto.LoginDTO;
+import com.cine_reserva_backend.model.dto.RegisterDTO;
+import com.cine_reserva_backend.service.UsuarioService;
+import com.cine_reserva_backend.web.config.JwtUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -9,11 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.cine_reserva_backend.model.dto.LoginDTO;
-import com.cine_reserva_backend.model.dto.RegisterDTO;
-import com.cine_reserva_backend.service.UsuarioService;
-import com.cine_reserva_backend.web.config.JwtUtil;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -40,7 +39,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> authenticate(@RequestBody LoginDTO loginDTO) throws Exception {
+    public ResponseEntity<String> authenticate(@RequestBody LoginDTO loginDTO) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                     loginDTO.getEmail(), loginDTO.getPassword()));

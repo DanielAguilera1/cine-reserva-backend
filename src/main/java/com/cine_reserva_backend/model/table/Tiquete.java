@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 @Entity
 @Table
 public class Tiquete {
@@ -46,5 +47,6 @@ public class Tiquete {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id", insertable = false, updatable = false)
     @JsonIgnore
+    @ToString.Exclude
     private Usuario usuario;
 }

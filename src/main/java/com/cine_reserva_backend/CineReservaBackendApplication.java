@@ -10,5 +10,4 @@ public class CineReservaBackendApplication {
     public static void main(String[] args) {
         SpringApplication.run(CineReservaBackendApplication.class, args);
     }
-
 }
